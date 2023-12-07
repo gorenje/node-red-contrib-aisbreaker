@@ -21,7 +21,7 @@ module.exports = function(RED) {
               text: "Failed, no API TOKEN provided."
             });
 
-            node.error({ ...msg, error: err })
+            node.error("error occurred", { ...msg, error: err })
             done();
             return;
           }
@@ -41,24 +41,19 @@ module.exports = function(RED) {
                 },
               }],
             }).then( resp => {
-              send({
-                ...msg,
-                payload: resp
-              })
+              send({ ...msg, payload: resp })
               done()
             }).catch( err => {
-              node.error({ ...msg, error: err })
+              node.error("error occurred", { ...msg, error: err })
               done();
             })
-
           } catch( err ) {
-            node.error({ ...msg, error: err })
+            node.error("error occurred", { ...msg, error: err })
             done();
           }
         })
-
       }).catch( err => {
-        node.error({ ...msg, error: err })
+        node.error("error occurred", { ...msg, error: err })
         done();
       })
     });
