@@ -1,0 +1,559 @@
+[
+    {
+        "id": "221c9188e10d4966",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "ChatGPT 3.5",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-3.5-turbo",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-3.5-turbo\"\n}",
+        "x": 1304,
+        "y": 642,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    },
+    {
+        "id": "5fa19614cf85a327",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "insightful comment",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write an insigthful comment on this: \n\n\n",
+        "output": "str",
+        "x": 838,
+        "y": 308.5000305175781,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "7aa704be54c361b0",
+        "type": "change",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outputs[0].text.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1541,
+        "y": 642,
+        "wires": [
+            [
+                "4a203e27eb80bd98"
+            ]
+        ]
+    },
+    {
+        "id": "baf5496b8f91eb1c",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "interesting and humourous",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write a interesting and humourous response to this: \n\n\n",
+        "output": "str",
+        "x": 849,
+        "y": 642,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "d3821eed1fd663ab",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "enlightened",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write an enlightened summary of the following: \n\n\n",
+        "output": "str",
+        "x": 843,
+        "y": 988.5,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "a89a9d723f2b1b2a",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "ChatGPT 4",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-4",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-4\"\n}",
+        "x": 1281,
+        "y": 722,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    },
+    {
+        "id": "4f4785fa1d52c0a9",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "Hugging Face",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:huggingface.co/microsoft/DialoGPT-large",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:huggingface.co/microsoft/DialoGPT-large\"\n}",
+        "x": 1290,
+        "y": 568,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    },
+    {
+        "id": "2eff8061.69559",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "Textarea",
+        "order": 1,
+        "width": "12",
+        "height": "12",
+        "format": "      <textarea name=\"textentered\" id=\"textentered\"  rows=\"8\" cols=\"25\">No message received</textarea>\n      <p>\n      <input type=\"submit\" value=\"Do It!\" ng-click=\"test()\">\n      \n      <input type=\"submit\" value=\"Clear\" ng-click=\"clear()\">\n<script>\n\n(function(scope) {\n  const element = document.getElementById(\"textentered\");\n  \n  scope.$watch('msg', function(msg) {\n    if (msg.payload) {\n      // Do something when msg arrives\n      element.value = msg.payload;\n    }\n  })\n  \n  scope.test = function() {\n        var text = element.value;\n        scope.send({payload: text});\n    }\n  scope.clear = function() {\n    $('#textentered').val(\"\")\n  }\n})(scope)\n\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 441,
+        "y": 152,
+        "wires": [
+            [
+                "8df572081392633b",
+                "9875d0443b18f6b4"
+            ]
+        ]
+    },
+    {
+        "id": "d1f059eee018ca76",
+        "type": "catch",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 1290,
+        "y": 819,
+        "wires": [
+            [
+                "013b897190ad66c4",
+                "d5ee10748d95f54d"
+            ]
+        ]
+    },
+    {
+        "id": "d88936e381996506",
+        "type": "function",
+        "z": "e1ff991f249109b1",
+        "name": "function 29",
+        "func": "\nreturn msg.payload.map( d => {\n    return {\n        ...msg,\n        payload: d\n    }\n});\n",
+        "outputs": 9,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1927,
+        "y": 1135,
+        "wires": [
+            [
+                "fe5c6405f3f0d9b0"
+            ],
+            [
+                "8cdc8348bf65bb89"
+            ],
+            [
+                "373ff27ee45bd872"
+            ],
+            [
+                "212a803913718c6d"
+            ],
+            [
+                "c10002e7f94e19ef"
+            ],
+            [
+                "b9742946e8ca68ce"
+            ],
+            [
+                "177dac6c1569499f"
+            ],
+            [
+                "c6e46a818d4c1267"
+            ],
+            [
+                "0dff7cbb07433086"
+            ]
+        ]
+    },
+    {
+        "id": "013b897190ad66c4",
+        "type": "change",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$string($$._error)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1538,
+        "y": 772,
+        "wires": [
+            [
+                "4a203e27eb80bd98"
+            ]
+        ]
+    },
+    {
+        "id": "4a203e27eb80bd98",
+        "type": "join",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "9",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1717,
+        "y": 721,
+        "wires": [
+            [
+                "d88936e381996506"
+            ]
+        ]
+    },
+    {
+        "id": "fe5c6405f3f0d9b0",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 455,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cdc8348bf65bb89",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 498.125,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "373ff27ee45bd872",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 541.25,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "212a803913718c6d",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 584.375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c10002e7f94e19ef",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 627.5,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9742946e8ca68ce",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 670.625,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "177dac6c1569499f",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 713.75,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6e46a818d4c1267",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 756.875,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dff7cbb07433086",
+        "type": "ui_template",
+        "z": "e1ff991f249109b1",
+        "group": "cc1cf455ad874385",
+        "name": "",
+        "order": 10,
+        "width": "12",
+        "height": "7",
+        "format": "<h3>Text</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2119,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d5ee10748d95f54d",
+        "type": "debug",
+        "z": "e1ff991f249109b1",
+        "name": "Exception Will Happen",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1558.5,
+        "y": 896.75,
+        "wires": []
+    },
+    {
+        "id": "9875d0443b18f6b4",
+        "type": "change",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "please wait...",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1917,
+        "y": 152,
+        "wires": [
+            [
+                "fe5c6405f3f0d9b0",
+                "8cdc8348bf65bb89",
+                "373ff27ee45bd872",
+                "212a803913718c6d",
+                "c10002e7f94e19ef",
+                "b9742946e8ca68ce",
+                "177dac6c1569499f",
+                "c6e46a818d4c1267",
+                "0dff7cbb07433086"
+            ]
+        ]
+    },
+    {
+        "id": "8df572081392633b",
+        "type": "junction",
+        "z": "e1ff991f249109b1",
+        "x": 564.7347115278244,
+        "y": 642,
+        "wires": [
+            [
+                "5fa19614cf85a327",
+                "baf5496b8f91eb1c",
+                "d3821eed1fd663ab"
+            ]
+        ]
+    },
+    {
+        "id": "cc1cf455ad874385",
+        "type": "ui_group",
+        "name": "AI Content",
+        "tab": "5bf67fdbd63346a2",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5bf67fdbd63346a2",
+        "type": "ui_tab",
+        "name": "AI COntent",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
