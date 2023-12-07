@@ -1,0 +1,247 @@
+[
+    {
+        "id": "89e529eba8a08ea7",
+        "type": "AIsBreaker",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "ChatGPT 3.5",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-3.5-turbo",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-3.5-turbo\"\n}",
+        "x": 1397,
+        "y": 870,
+        "wires": [
+            [
+                "b7e8f1f3ad936eda"
+            ]
+        ]
+    },
+    {
+        "id": "adc29ca562f87ece",
+        "type": "inject",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 907,
+        "y": 986,
+        "wires": [
+            [
+                "d682f828272ef03c"
+            ]
+        ]
+    },
+    {
+        "id": "2c3771cabf32004e",
+        "type": "debug",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "final output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1824,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d682f828272ef03c",
+        "type": "template",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please provide a summary of the following:\n\nArtificial intelligence (AI) is the intelligence of machines or software, as opposed to the intelligence of humans or animals. It is a field of study in computer science which develops and studies intelligent machines. Such machines may be called AIs.\n\nAI technology is widely used throughout industry, government, and science. Some high-profile applications are: advanced web search engines (e.g., Google Search), recommendation systems (used by YouTube, Amazon, and Netflix), understanding human speech (such as Google Assistant, Siri, and Alexa), self-driving cars (e.g., Waymo), generative and creative tools (ChatGPT and AI art), and superhuman play and analysis in strategy games (such as chess and Go).\n\nArtificial intelligence was founded as an academic discipline in 1956. The field went through multiple cycles of optimism followed by disappointment and loss of funding, but after 2012, when deep learning surpassed all previous AI techniques, there was a vast increase in funding and interest.\n\nThe various sub-fields of AI research are centered around particular goals and the use of particular tools. The traditional goals of AI research include reasoning, knowledge representation, planning, learning, natural language processing, perception, and support for robotics. General intelligence (the ability to complete any task performable by a human) is among the field's long-term goals. To solve these problems, AI researchers have adapted and integrated a wide range of problem-solving techniques, including search and mathematical optimization, formal logic, artificial neural networks, and methods based on statistics, operations research, and economics. AI also draws upon psychology, linguistics, philosophy, neuroscience and many other fields.",
+        "output": "str",
+        "x": 1528,
+        "y": 986,
+        "wires": [
+            [
+                "89e529eba8a08ea7"
+            ]
+        ]
+    },
+    {
+        "id": "b7e8f1f3ad936eda",
+        "type": "change",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outputs[0].text.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1286,
+        "y": 794,
+        "wires": [
+            [
+                "f2167584c4598796",
+                "ef0d4505d4705c6d"
+            ]
+        ]
+    },
+    {
+        "id": "f2167584c4598796",
+        "type": "template",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please expand the following:\n\n\n\n",
+        "output": "str",
+        "x": 1171,
+        "y": 734,
+        "wires": [
+            [
+                "abb0b4464040bf36"
+            ]
+        ]
+    },
+    {
+        "id": "abb0b4464040bf36",
+        "type": "AIsBreaker",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "HuggingFace",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:huggingface.co/microsoft/DialoGPT-large",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:huggingface.co/microsoft/DialoGPT-large\"\n}",
+        "x": 1034,
+        "y": 671,
+        "wires": [
+            [
+                "68834ad9261f4825"
+            ]
+        ]
+    },
+    {
+        "id": "68834ad9261f4825",
+        "type": "change",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outputs[0].text.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 597,
+        "wires": [
+            [
+                "978f252f94021757",
+                "7369a0f105398e04"
+            ]
+        ]
+    },
+    {
+        "id": "978f252f94021757",
+        "type": "AIsBreaker",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "Mirror Echo Chamber",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "aisbreaker:mirror",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"aisbreaker:mirror\",\n  \"forward2ServiceProps\": {\n    \"serviceId\": \"chat:echo\"\n  }\n}",
+        "x": 661,
+        "y": 504,
+        "wires": [
+            [
+                "6496005212126de8"
+            ]
+        ]
+    },
+    {
+        "id": "6496005212126de8",
+        "type": "change",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outputs[0].text.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 455,
+        "y": 400,
+        "wires": [
+            [
+                "2c3771cabf32004e"
+            ]
+        ]
+    },
+    {
+        "id": "ef0d4505d4705c6d",
+        "type": "debug",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "output from chatgpt",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1794,
+        "y": 794,
+        "wires": []
+    },
+    {
+        "id": "7369a0f105398e04",
+        "type": "debug",
+        "z": "abbc8ccc5dd2e5d8",
+        "name": "output from huggingface",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1784,
+        "y": 597,
+        "wires": []
+    }
+]

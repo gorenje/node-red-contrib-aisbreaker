@@ -1,0 +1,39 @@
+{
+  "name" : "@gregoriusrippenstein/node-red-contrib-aisbreaker",
+  "version": "0.0.1",
+  "dependencies": {
+    "aisbreaker-api-js": ">=0.1.11"
+  },
+
+  "description": "Node-RED wrapper node for AIsBreaker.org",
+  "keywords": [
+    "node-red",
+    "algorithmic-intelligence",
+    "ai",
+    "generative-ai",
+    "openai",
+    "huggingface"
+  ],
+
+  "license": "Don't do evil.",
+  "homepage": "https://github.com/gorenje/node-red-contrib-aisbreaker#readme",
+  "author": "Gerrit Riessen <gerrit@openmindmap.org>",
+  "engines": {
+    "node": ">=14"
+  },
+
+  "node-red" : {
+    "version": ">=3.0.0",
+    "nodes": {
+       "aisbreaker": "nodes/aisbreaker.js"
+    }
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gorenje/node-red-contrib-aisbreaker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gorenje/node-red-contrib-aisbreaker"
+  }
+}

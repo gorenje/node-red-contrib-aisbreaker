@@ -1,0 +1,29 @@
+{
+  "aisbreaker": {
+    
+    "api_token": {
+      "label": "API Token"
+    },
+
+    "serviceid": {
+      "label": "Service",
+      "chat_dummy": "Chat Dummy",
+      "chat_openai_com": "OpenAI (default)",
+      "chat_openai_com_gpt_3_5_turbo": "OpenAI (ChatGPT 3.5 Turbo)",
+      "chat_openai_com_gpt_4": "OpenAI (ChatGPT 4)",
+      "chat_huggingface_co_microsoft_dialogpt_large": "HuggingFace (MS DialoGPT) Large",
+      "chat_huggingface_co_microsoft_dialogpt_small": "HuggingFace (MS DialoGPT) Small",
+      "text_to_image_dummy": "Text to Image (Dummy)",
+      "text_to_image_openai_com": "OpenAI Text to Image",
+      "text_to_image_stability_ai": "StabilityAI Text to Image",
+      "chat_echo_mirror": "Echo+Mirror Chat",
+      "chat_huggingface_co_any_model": "HuggingFace Chat - Any Model",
+      "own_json": "Define own Json"
+    },
+    
+    "endpoint": {
+      "label": "API Server URL",
+      "placeholder": "Service Endpoint"
+    }
+  }
+}
