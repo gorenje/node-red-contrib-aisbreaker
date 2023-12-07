@@ -22,7 +22,7 @@
     },
     
     "endpoint": {
-      "label": "API Server URL",
+      "label": "Server URL",
       "placeholder": "Service Endpoint"
     }
   }

@@ -22,7 +22,7 @@
         value: "https://api.demo.aisbreaker.org"
       },
       servicejson: {
-        value: "{}"
+        value: '{ "serviceId": "chat:dummy"}'
       }
     },
 
@@ -47,29 +47,40 @@
         typeField: "#node-input-apiTokenType"
       });
       
-      $('#node-input-servicejson').val( this.servicejson )
+      let jssn = JSON.parse(this.servicejson)
 
       this.editor = RED.editor.createEditor({
         id: 'node-input-servicejson-editor',
         mode: 'ace/mode/json',
-        value: $("#node-input-servicejson").val()
+        value: JSON.stringify(jssn,null,2)
       });
+      
+      $('#node-input-serviceid').val( this.serviceid );
 
-      $('#node-input-serviceid').on('change', (e) => {
-        if (e) { e.preventDefault(); }
-        
-        let v = {
-          serviceId: $('#node-input-serviceid').val()
-        }
+      // delay this listener so as not to overwrite the default
+      // value of the editor. This is a stupid solution but the
+      // servicejson is the default value which is overwritten
+      // with the serviceid value is set... because this onchange event
+      // is triggered. so setup this listener _after_ setting
+      // the value of the selector, i.e. $('#..serviceid').val(..) above
+      // the servicejson _may_ have been altered by the user 
+      // directly, hence it's the single source of truth even if the
+      // serviceid is set.
+      setTimeout( () => {
+        $('#node-input-serviceid').on('change', (e) => {
+          if (e) { e.preventDefault(); }
+          
+          let v = {
+            serviceId: $('#node-input-serviceid').val()
+          }
 
-        if ( $('#node-input-serviceid').val() == "aisbreaker:mirror") {
-          v["forward2ServiceProps"] = { "serviceId": "chat:echo" }
-        }
+          if ( $('#node-input-serviceid').val() == "aisbreaker:mirror") {
+            v["forward2ServiceProps"] = { "serviceId": "chat:echo" }
+          }
 
-        this.editor.setValue(JSON.stringify(v,null,2))
-      })
-
-      $('#node-input-serviceid').val( this.serviceid )
+          this.editor.setValue(JSON.stringify(v,null,2))
+        })
+      }, 300);
     },
 
     oneditcancel: function() {
@@ -117,7 +128,7 @@
       <option value="chat:openai.com/gpt-4" data-i18n="aisbreaker.serviceid.chat_openai_com_gpt_4"></option>
       <option value="chat:huggingface.co/microsoft/DialoGPT-large" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_large"></option>
       <option value="chat:huggingface.co/microsoft/DialoGPT-small" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_small"></option>
-      <option value="chat:huggingface.co/ANY/MODEL" data-i18n="aisbreaker.serviceid.chat_huggingface_co_any_model"></option>
+      <option value="chat:huggingface.co/REPLACE_COMPANY/REPLACE_MODEL" data-i18n="aisbreaker.serviceid.chat_huggingface_co_any_model"></option>
       <option value="text-to-image:dummy" data-i18n="aisbreaker.serviceid.text_to_image_dummy"></option>
       <option value="text-to-image:openai.com" data-i18n="aisbreaker.serviceid.text_to_image_openai_com"></option>
       <option value="text-to-image:stability.ai" data-i18n="aisbreaker.serviceid.text_to_image_stability_ai"></option>
