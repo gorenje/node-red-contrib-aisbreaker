@@ -1,0 +1,204 @@
+[
+    {
+        "id": "221c9188e10d4966",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "ChatGPT 3.5",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-3.5-turbo",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-3.5-turbo\"\n}",
+        "x": 1285,
+        "y": 640,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    },
+    {
+        "id": "bbf49844ac1ab006",
+        "type": "inject",
+        "z": "e1ff991f249109b1",
+        "name": "trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 558,
+        "y": 528,
+        "wires": [
+            [
+                "914538d2a10f7ea8"
+            ]
+        ]
+    },
+    {
+        "id": "5fa19614cf85a327",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "comment",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write a comment on this: \n\n\n",
+        "output": "str",
+        "x": 1065,
+        "y": 567,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "7aa704be54c361b0",
+        "type": "change",
+        "z": "e1ff991f249109b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outputs[0].text.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1518,
+        "y": 642,
+        "wires": [
+            [
+                "662c0f3123db23ea"
+            ]
+        ]
+    },
+    {
+        "id": "662c0f3123db23ea",
+        "type": "debug",
+        "z": "e1ff991f249109b1",
+        "name": "output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1737,
+        "y": 642,
+        "wires": []
+    },
+    {
+        "id": "914538d2a10f7ea8",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "d": true,
+        "name": "content",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Add your content here.",
+        "output": "str",
+        "x": 829,
+        "y": 637,
+        "wires": [
+            [
+                "5fa19614cf85a327",
+                "baf5496b8f91eb1c",
+                "d3821eed1fd663ab"
+            ]
+        ]
+    },
+    {
+        "id": "baf5496b8f91eb1c",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "response",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write a response to this: \n\n\n",
+        "output": "str",
+        "x": 1055,
+        "y": 640,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "d3821eed1fd663ab",
+        "type": "template",
+        "z": "e1ff991f249109b1",
+        "name": "insightful",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Please write an insightful idea about the following: \n\n\n",
+        "output": "str",
+        "x": 1064,
+        "y": 722,
+        "wires": [
+            [
+                "221c9188e10d4966",
+                "a89a9d723f2b1b2a",
+                "4f4785fa1d52c0a9"
+            ]
+        ]
+    },
+    {
+        "id": "a89a9d723f2b1b2a",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "ChatGPT 4",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-4",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-4\"\n}",
+        "x": 1281,
+        "y": 722,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    },
+    {
+        "id": "4f4785fa1d52c0a9",
+        "type": "AIsBreaker",
+        "z": "e1ff991f249109b1",
+        "name": "Hugging Face",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:huggingface.co/REPLACE_COMPANY/REPLACE_MODEL",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:huggingface.co/microsoft/Orca-2-13b\"\n}",
+        "x": 1290,
+        "y": 568,
+        "wires": [
+            [
+                "7aa704be54c361b0"
+            ]
+        ]
+    }
+]
