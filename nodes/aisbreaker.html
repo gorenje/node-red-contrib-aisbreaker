@@ -10,10 +10,10 @@
         value:"",
       },
       apiToken: {
-        value: "AISBREAKER_API_TOKEN",
+        value: "",
       },
       apiTokenType: {
-        value: "env",
+        value: "cred",
       },
       serviceid: {
         value: "chat:dummy"
@@ -120,16 +120,16 @@
 
   <div class="form-row">
     <label for="node-input-apiToken">
-      <i class="fa fa-tag"></i>
-      <span data-i18n="aisbreaker.api_token.label"></span>
+      <i class="fa fa-key"></i>
+      <span data-i18n="aisbreaker.access_token.label"></span>
     </label>
-    <input type="text" id="node-input-apiToken">
+    <input type="text" id="node-input-apiToken" data-i18n="[placeholder]aisbreaker.access_token.placeholder">
     <input type="hidden" id="node-input-apiTokenType">
   </div>
 
   <div class="form-row">
     <label for="node-input-serviceid">
-      <i class="fa fa-tag"></i>
+      <i class="fa fa-fax"></i>
       <span data-i18n="aisbreaker.serviceid.label"></span>
     </label>
     <select id="node-input-serviceid">
@@ -156,7 +156,7 @@
   </div>
 
   <div class="form-row">
-    <label for="node-input-endpoint"><i class="fa fa-tag"></i> <span data-i18n="aisbreaker.endpoint.label"></span></label>
+    <label for="node-input-endpoint"><i class="fa fa-server"></i> <span data-i18n="aisbreaker.endpoint.label"></span></label>
     <input type="text" id="node-input-endpoint" data-i18n="[placeholder]aisbreaker.endpoint.placeholder">
   </div>
 </script>

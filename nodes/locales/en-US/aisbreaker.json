@@ -1,10 +1,11 @@
 {
   "aisbreaker": {
     
-    "api_token": {
-      "label": "API Token"
+    "access_token": {
+      "label": "Access Token",
+      "placeholder": "< API access token/key/secret for AIsBreaker or AI service >"
     },
-
+    
     "serviceid": {
       "label": "Service",
       "chat_dummy": "Chat Dummy",
