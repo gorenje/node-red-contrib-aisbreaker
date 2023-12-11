@@ -31,7 +31,7 @@ module.exports = function(RED) {
           }
 
           try {
-            const aisService = module.api.AIsBreaker.getRemoteAIsService(cfg.endpoint, JSON.parse(cfg.servicejson), auth);
+            const aisService = module.api.AIsBreaker.getAIsService(cfg.endpoint, JSON.parse(cfg.servicejson), auth);
 
             aisService.process({
               inputs: [{

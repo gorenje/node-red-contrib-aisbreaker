@@ -1,8 +1,8 @@
 {
   "name" : "@gregoriusrippenstein/node-red-contrib-aisbreaker",
-  "version": "0.0.1",
+  "version": "0.1.15",
   "dependencies": {
-    "aisbreaker-api-js": ">=0.1.11"
+    "aisbreaker-api-js": ">=0.1.15"
   },
 
   "description": "Node-RED wrapper node for AIsBreaker.org",

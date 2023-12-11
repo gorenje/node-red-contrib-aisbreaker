@@ -75,7 +75,19 @@
           }
 
           if ( $('#node-input-serviceid').val() == "aisbreaker:mirror") {
-            v["forward2ServiceProps"] = { "serviceId": "chat:echo" }
+            v = {
+              "serviceId": "aisbreaker:mirror",
+              "forward2ServiceProps": { 
+                  "serviceId": "chat:echo" 
+              }
+            }
+          }
+
+          if ( $('#node-input-serviceid').val() == "chat:openai.com/compatible-version" ) {
+            v = {
+              "serviceId": "chat:openai.com",
+              "url": "https://api.openai.compatible.example.com/v1/chat/completions"
+            }
           }
 
           this.editor.setValue(JSON.stringify(v,null,2))
@@ -123,12 +135,15 @@
     <select id="node-input-serviceid">
       <option value="chat:dummy" data-i18n="aisbreaker.serviceid.chat_dummy"></option>
       <option value="aisbreaker:mirror" data-i18n="aisbreaker.serviceid.chat_echo_mirror"></option>
+
       <option value="chat:openai.com" data-i18n="aisbreaker.serviceid.chat_openai_com"></option>
       <option value="chat:openai.com/gpt-3.5-turbo" data-i18n="aisbreaker.serviceid.chat_openai_com_gpt_3_5_turbo"></option>
       <option value="chat:openai.com/gpt-4" data-i18n="aisbreaker.serviceid.chat_openai_com_gpt_4"></option>
+      <option value="chat:openai.com/compatible-version" data-i18n="aisbreaker.serviceid.chat_gtp_compatiable"></option>
       <option value="chat:huggingface.co/microsoft/DialoGPT-large" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_large"></option>
       <option value="chat:huggingface.co/microsoft/DialoGPT-small" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_small"></option>
-      <option value="chat:huggingface.co/REPLACE_COMPANY/REPLACE_MODEL" data-i18n="aisbreaker.serviceid.chat_huggingface_co_any_model"></option>
+      <option value="chat:huggingface.co/<HF_ACCOUNT>/<HF_MODEL>" data-i18n="aisbreaker.serviceid.chat_huggingface_co_any_model"></option>
+      
       <option value="text-to-image:dummy" data-i18n="aisbreaker.serviceid.text_to_image_dummy"></option>
       <option value="text-to-image:openai.com" data-i18n="aisbreaker.serviceid.text_to_image_openai_com"></option>
       <option value="text-to-image:stability.ai" data-i18n="aisbreaker.serviceid.text_to_image_stability_ai"></option>
