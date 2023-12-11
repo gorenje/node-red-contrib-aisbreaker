@@ -1,6 +1,6 @@
 {
   "name" : "@gregoriusrippenstein/node-red-contrib-aisbreaker",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "dependencies": {
     "aisbreaker-api-js": ">=0.1.15"
   },
