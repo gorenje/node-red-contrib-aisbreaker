@@ -2,6 +2,8 @@
 
 A wrapper node for the [AIsBreaker.org](https://AIsBreaker.org) service.
 
+AIsBreaker offers a developer-friendly API for streamlined access to a variety of generative AI services, including OpenAI/ChatGPT, all Hugging Face AIs, and more ... to provide simplicity and to avoid vendor lock-in.
+
 ### Examples 
 
 - [Usage example](https://flowhub.org/f/abbc8ccc5dd2e5d8)

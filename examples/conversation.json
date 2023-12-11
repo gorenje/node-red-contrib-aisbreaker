@@ -1,0 +1,845 @@
+[
+    {
+        "id": "550008f1e0f908dc",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Textarea",
+        "order": 1,
+        "width": 12,
+        "height": 7,
+        "format": "      <textarea name=\"textentered\" id=\"textentered\"  rows=\"8\" cols=\"25\">No message received</textarea>\n      <p>\n      <input type=\"submit\" value=\"Do It!\" ng-click=\"test()\">\n      \n      <input style=\"margin-left: 100px;\" type=\"submit\" value=\"Reset\" ng-click=\"clear()\">\n<script>\n\n(function(scope) {\n  const element = document.getElementById(\"textentered\");\n  \n  scope.$watch('msg', function(msg) {\n    if (msg.payload) {\n      // Do something when msg arrives\n      element.value = msg.payload;\n    }\n  })\n  \n  scope.test = function() {\n        var text = element.value;\n        scope.send({topic: \"submit\", payload: text});\n    }\n  scope.clear = function() {\n    $('#textentered').val(\"\")\n    scope.send({ topic: \"reset\" });\n  }\n})(scope)\n\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 362,
+        "y": 763,
+        "wires": [
+            [
+                "893597d9bd3d6f07"
+            ]
+        ]
+    },
+    {
+        "id": "67117a8ba74ce925",
+        "type": "catch",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "scope": [
+            "19a20cd5fc0181c1"
+        ],
+        "uncaught": false,
+        "x": 1073,
+        "y": 825,
+        "wires": [
+            [
+                "f7f5a50902be1ed5",
+                "37ce0cf54ad329f5"
+            ]
+        ]
+    },
+    {
+        "id": "972bd03c2830626c",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 1",
+        "order": 13,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 1</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 483,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53125686390db665",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 2",
+        "order": 20,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 2</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 526.125,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9620e5f8237cde52",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 3",
+        "order": 27,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 3</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 569.25,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "765ce293b3effc17",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 4",
+        "order": 34,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 4</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 612.375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2612a7d4012976cf",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 5",
+        "order": 41,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 5</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 655.5,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c38f90e7fbf141b8",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 6",
+        "order": 48,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 6</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 698.625,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c44d2dac2e5e0fdf",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 7",
+        "order": 55,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 7</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 741.75,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd013919d3d454e0",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 8",
+        "order": 62,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 8</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 784.875,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "200235c0e08736ac",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Response 9",
+        "order": 69,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Response 9</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2137,
+        "y": 828,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f7f5a50902be1ed5",
+        "type": "debug",
+        "z": "aaab9308f8fbb2c5",
+        "name": "Exception Will Happen",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300.5,
+        "y": 905.75,
+        "wires": []
+    },
+    {
+        "id": "74667be00a795d44",
+        "type": "change",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "...",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "conversationState",
+                "pt": "flow"
+            },
+            {
+                "t": "set",
+                "p": "responseCount",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1567,
+        "y": 483,
+        "wires": [
+            [
+                "972bd03c2830626c",
+                "53125686390db665",
+                "9620e5f8237cde52",
+                "765ce293b3effc17",
+                "2612a7d4012976cf",
+                "c38f90e7fbf141b8",
+                "c44d2dac2e5e0fdf",
+                "bd013919d3d454e0",
+                "200235c0e08736ac",
+                "29770a9f5fb4e98f",
+                "c8ff9fe16fc71a24",
+                "2932b0c34d52d7c1",
+                "478e639fb265f935",
+                "b9a027fe14130577",
+                "0a2217fc38e14d31",
+                "396fe6ac2cbdd70a",
+                "7badc9b6cca727cb",
+                "1f4d4de1addeb8f5"
+            ]
+        ]
+    },
+    {
+        "id": "893597d9bd3d6f07",
+        "type": "switch",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "reset",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "submit",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 491,
+        "wires": [
+            [
+                "74667be00a795d44"
+            ],
+            [
+                "b5ba91681d391af9",
+                "8fb5b3907694e059"
+            ]
+        ]
+    },
+    {
+        "id": "19a20cd5fc0181c1",
+        "type": "AIsBreaker",
+        "z": "aaab9308f8fbb2c5",
+        "name": "ChatGPT 4",
+        "apiToken": "",
+        "apiTokenType": "cred",
+        "serviceid": "chat:openai.com/gpt-4",
+        "endpoint": "https://api.demo.aisbreaker.org",
+        "servicejson": "{\n  \"serviceId\": \"chat:openai.com/gpt-4\"\n}",
+        "x": 1071,
+        "y": 726,
+        "wires": [
+            [
+                "4a7a17c5cd84116c"
+            ]
+        ]
+    },
+    {
+        "id": "467866d6d34d8998",
+        "type": "switch",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "property": "responseCount",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "9",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 9,
+        "x": 1597,
+        "y": 776,
+        "wires": [
+            [
+                "972bd03c2830626c"
+            ],
+            [
+                "53125686390db665"
+            ],
+            [
+                "9620e5f8237cde52"
+            ],
+            [
+                "765ce293b3effc17"
+            ],
+            [
+                "2612a7d4012976cf"
+            ],
+            [
+                "c38f90e7fbf141b8"
+            ],
+            [
+                "c44d2dac2e5e0fdf"
+            ],
+            [
+                "bd013919d3d454e0"
+            ],
+            [
+                "200235c0e08736ac"
+            ]
+        ]
+    },
+    {
+        "id": "4a7a17c5cd84116c",
+        "type": "change",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "responseCount",
+                "pt": "flow",
+                "to": "$flowContext(\"responseCount\") + 1",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "conversationState",
+                "pt": "flow",
+                "to": "conversationState",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1411,
+        "y": 725,
+        "wires": [
+            [
+                "467866d6d34d8998"
+            ]
+        ]
+    },
+    {
+        "id": "b5ba91681d391af9",
+        "type": "change",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "conversationState",
+                "pt": "msg",
+                "to": "conversationState",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 796,
+        "y": 726,
+        "wires": [
+            [
+                "19a20cd5fc0181c1"
+            ]
+        ]
+    },
+    {
+        "id": "37ce0cf54ad329f5",
+        "type": "change",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$string($$.error, true) & $string($$._error, true) & $string($$, true)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1411,
+        "y": 825,
+        "wires": [
+            [
+                "4a7a17c5cd84116c"
+            ]
+        ]
+    },
+    {
+        "id": "29770a9f5fb4e98f",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 1",
+        "order": 9,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 1</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 903,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8ff9fe16fc71a24",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 2",
+        "order": 16,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 2</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 946.125,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2932b0c34d52d7c1",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 3",
+        "order": 23,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 3</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 989.25,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "478e639fb265f935",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 4",
+        "order": 30,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 4</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1032.375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9a027fe14130577",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 5",
+        "order": 37,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 5</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1075.5,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0a2217fc38e14d31",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 6",
+        "order": 44,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 6</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1118.625,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "396fe6ac2cbdd70a",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 7",
+        "order": 51,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 7</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1161.75,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7badc9b6cca727cb",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 8",
+        "order": 58,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 8</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1204.875,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f4d4de1addeb8f5",
+        "type": "ui_template",
+        "z": "aaab9308f8fbb2c5",
+        "group": "4b45598a46e03f0b",
+        "name": "Input 9",
+        "order": 65,
+        "width": 8,
+        "height": 5,
+        "format": "<h3>Input 9</h3>\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2131,
+        "y": 1248,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1378a6c4b3222870",
+        "type": "switch",
+        "z": "aaab9308f8fbb2c5",
+        "name": "",
+        "property": "$flowContext(\"responseCount\") + 1",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "9",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 9,
+        "x": 1755,
+        "y": 1066,
+        "wires": [
+            [
+                "29770a9f5fb4e98f"
+            ],
+            [
+                "c8ff9fe16fc71a24"
+            ],
+            [
+                "2932b0c34d52d7c1"
+            ],
+            [
+                "478e639fb265f935"
+            ],
+            [
+                "b9a027fe14130577"
+            ],
+            [
+                "0a2217fc38e14d31"
+            ],
+            [
+                "396fe6ac2cbdd70a"
+            ],
+            [
+                "7badc9b6cca727cb"
+            ],
+            [
+                "1f4d4de1addeb8f5"
+            ]
+        ]
+    },
+    {
+        "id": "8fb5b3907694e059",
+        "type": "junction",
+        "z": "aaab9308f8fbb2c5",
+        "x": 623.2857158184052,
+        "y": 1067.4285634756088,
+        "wires": [
+            [
+                "1378a6c4b3222870"
+            ]
+        ]
+    },
+    {
+        "id": "4b45598a46e03f0b",
+        "type": "ui_group",
+        "name": "AI Conversation",
+        "tab": "d9a5fc4d10281347",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d9a5fc4d10281347",
+        "type": "ui_tab",
+        "name": "AI Conversation",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

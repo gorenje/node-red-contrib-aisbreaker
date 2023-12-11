@@ -26,6 +26,11 @@
     "endpoint": {
       "label": "Server URL",
       "placeholder": "Service Endpoint"
+    },
+    
+    "status": {
+      "asking": "Asking...",
+      "error": "Error Occurred"
     }
   }
 }

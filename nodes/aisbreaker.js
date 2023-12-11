@@ -33,17 +33,37 @@ module.exports = function(RED) {
           try {
             const aisService = module.api.AIsBreaker.getAIsService(cfg.endpoint, JSON.parse(cfg.servicejson), auth);
 
-            aisService.process({
+            node.status({ fill:"yellow",shape:"ring",text:RED._("aisbreaker.status.asking") });
+
+            let data = {
               inputs: [{
                 text: {
                   role: 'user',
                   content: msg.payload,
                 },
-              }],
-            }).then( resp => {
-              send({ ...msg, payload: resp })
+              }]
+            }
+
+            if (msg.conversationState) {
+              data["conversationState"] = msg.conversationState
+            }
+
+            aisService.process(
+              data
+            ).then( resp => {
+              node.status({});
+
+              send({ 
+                ...msg, 
+                payload: (resp.outputs && resp.outputs[0] && resp.outputs[0].text && resp.outputs[0].text.content ) || undefined,
+                conversationState: resp.conversationState
+              })
+              
               done()
             }).catch( err => {
+              node.status({ fill: "red", shape: "ring", text: RED._("aisbreaker.status.error") });
+              setTimeout( () => { node.status({}) }, 3000);
+
               node.error("error occurred", { ...msg, error: err })
               done();
             })
