@@ -15,6 +15,8 @@
       "chat_openai_com_gpt_4": "OpenAI (ChatGPT 4)",
       "chat_huggingface_co_microsoft_dialogpt_large": "HuggingFace (MS DialoGPT) Large",
       "chat_huggingface_co_microsoft_dialogpt_small": "HuggingFace (MS DialoGPT) Small",
+      "chat_google_gemini": "Google VertexAI Gemini",
+      "chat_google_gemini_with_own_instance": "Google VertexAI Gemini (your instance @Google Cloud)",
       "chat_huggingface_co_any_model": "HuggingFace - Any Account, Any Model",
       "chat_gtp_compatiable": "OpenAI ChatGPT compatible servers (e.g., Azure OpenAI GPT)",
       "text_to_image_dummy": "Text to Image (Dummy)",

@@ -90,6 +90,14 @@
             }
           }
 
+          if ( $('#node-input-serviceid').val() == "chat:gemini.vertexai.google.com/<INSTANCE>") {
+            v = {
+              "serviceId": "chat:gemini.vertexai.google.com",
+              "project": "<YOUR-GOOGLE-CLOUD-PROJECT>",
+              "location": "<YOUR-GOOGLE-CLOUD-LOCATION, e.g. 'us-central1'>"
+            }
+          }
+          
           this.editor.setValue(JSON.stringify(v,null,2))
         })
       }, 300);
@@ -143,7 +151,8 @@
       <option value="chat:huggingface.co/microsoft/DialoGPT-large" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_large"></option>
       <option value="chat:huggingface.co/microsoft/DialoGPT-small" data-i18n="aisbreaker.serviceid.chat_huggingface_co_microsoft_dialogpt_small"></option>
       <option value="chat:huggingface.co/<HF_ACCOUNT>/<HF_MODEL>" data-i18n="aisbreaker.serviceid.chat_huggingface_co_any_model"></option>
-      
+      <option value="chat:gemini.vertexai.google.com" data-i18n="aisbreaker.serviceid.chat_google_gemini"></option>
+      <option value="chat:gemini.vertexai.google.com/<INSTANCE>" data-i18n="aisbreaker.serviceid.chat_google_gemini_with_own_instance"></option>
       <option value="text-to-image:dummy" data-i18n="aisbreaker.serviceid.text_to_image_dummy"></option>
       <option value="text-to-image:openai.com" data-i18n="aisbreaker.serviceid.text_to_image_openai_com"></option>
       <option value="text-to-image:stability.ai" data-i18n="aisbreaker.serviceid.text_to_image_stability_ai"></option>
